@@ -1,0 +1,54 @@
+# Project: C2W API2 Application
+# Maintaner: David H Tekwie <yamis.spiriteagle@gmail.com>
+# Date: November 2024
+# Caution: Speak to maintainer before executing these commands.
+
+version: '3.9'
+
+# Networks
+networks:
+  django-network:
+    driver: bridge
+
+# Volumes
+volumes:
+  postgres_data:
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: c2wapi2_app
+    env_file: .env
+    ports:
+      - "9000:9000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    networks:
+      - django-network
+
+  db:
+    image: postgres:14
+    container_name: c2wapi2_db
+    env_file: .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - django-network
+
+  nginx:
+    image: nginx:latest
+    container_name: c2wapi2_web
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - django-network

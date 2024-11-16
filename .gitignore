@@ -1,0 +1,60 @@
+# Created by https://www.gitignore.io/api/python,django,wagtail
+# Edit at https://www.gitignore.io/?templates=python,django,wagtail
+
+# Python compiled files
+*.py[cod]
+__pycache__/
+
+# Virtual environment
+/.env
+venv/
+*.virtualenv
+*.venv/
+env/
+ENV/
+env.bak/
+env.local/
+bin/
+__pycache__/
+
+# Django compiled files
+*.log
+*.pyc
+*.pyo
+*.pyd
+*.pydoc
+__pycache__/
+db.sqlite3
+*.sqlite3-journal
+
+# Wagtail compiled files
+.wagtail/
+.wagtail_cache/
+.wagtail/
+wagtail.wsgi/
+
+# Production-related files
+*.sqlite3
+*.db
+staticfiles/
+media/
+
+# Logs
+*.log
+*.log.*
+
+# Editor and IDE files
+.idea/
+*.sublime-project
+*.sublime-workspace
+.vscode/
+*.sublime-workspace
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Wagtail specific files
+.wagtail_hooks
+.wagtail_cache
+.wagtail_search_indexes

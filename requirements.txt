@@ -1,0 +1,5 @@
+Django==5.1.1
+djangorestframework
+wagtail
+psycopg2
+gunicorn
